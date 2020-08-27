@@ -1,11 +1,16 @@
-// const names = require('../package/contents/lib/names')
-
+// tokenizer & parser mock data
 const formats = [
   {
-    format: 'dd-MM',
-    tokens: ['dd', '-', 'MM'],
+    format: 'gdd-gmm:gyy+-+gHH|gMM.gss',
+    tokens: ['gdd', '-', 'gmm', ':', 'gyy', '+', '-', '+', 'gHH', '|', 'gMM', '.', 'gss'],
+    now: new Date('2015-08-09T07:03:08.006'),
+    display: '09-08:15+-+07|03.08'
+  },
+  {
+    format: 'pgyyyy-A-pgmmmm::pjmmmm=pjdd',
+    tokens: ['pgyyyy', '-', 'A', '-', 'pgmmmm', ':', ':', 'pjmmmm', '=', 'pjdd'],
     now: new Date('2015-09-02T07:03:08.006'),
-    display: '02-09'
+    display: '۲۰۱۵-A-سپتامبر::شهریور=۱۱'
   }
 ]
 
@@ -31,28 +36,96 @@ const masks = [
     pgdddd: 'ونزدی',
     jdddd: 'CharShanbe',
     pjdddd: 'چهارشنبه',
-    m: '8',
-    pm: '۸',
-    mm: '08',
-    pmm: '۰۸',
-    mmm: 'Aug',
-    pmmm: 'شهر',
-    mmmm: 'August',
-    pmmmm: 'شهریور',
-    yy: '20',
-    yyyy: '2020',
-    h: '3',
-    hh: '03',
-    H: '3',
-    HH: '03',
-    M: '27',
-    MM: '27',
-    s: '49',
-    ss: '49',
-    t: 'a',
-    tt: 'am',
-    T: 'A',
-    TT: 'AM'
+    //
+    gm: '8',
+    pgm: '۸',
+    jm: '6',
+    pjm: '۶',
+    //
+    gmm: '08',
+    pgmm: '۰۸',
+    jmm: '06',
+    pjmm: '۰۶',
+    //
+    gmmm: 'Aug',
+    pgmmm: 'آگو',
+    jmmm: 'Sha',
+    pjmmm: 'شهر',
+    //
+    gmmmm: 'August',
+    pgmmmm: 'آگوست',
+    jmmmm: 'Shahrivar',
+    pjmmmm: 'شهریور',
+    //
+    gyy: '20',
+    pgyy: '۲۰',
+    jyy: '99',
+    pjyy: '۹۹',
+    //
+    gyyyy: '2020',
+    pgyyyy: '۲۰۲۰',
+    jyyyy: '1399',
+    pjyyyy: '۱۳۹۹',
+    //
+    gh: '3',
+    pgh: '۳',
+    jh: '3',
+    pjh: '۳',
+    //
+    ghh: '03',
+    pghh: '۰۳',
+    jhh: '03',
+    pjhh: '۰۳',
+    //
+    gH: '3',
+    pgH: '۳',
+    jH: '3',
+    pjH: '۳',
+    //
+    gHH: '03',
+    pgHH: '۰۳',
+    jHH: '03',
+    pjHH: '۰۳',
+    //
+    gM: '27',
+    pgM: '۲۷',
+    jM: '27',
+    pjM: '۲۷',
+    //
+    gMM: '27',
+    pgMM: '۲۷',
+    jMM: '27',
+    pjMM: '۲۷',
+    //
+    gs: '49',
+    pgs: '۴۹',
+    js: '49',
+    pjs: '۴۹',
+    //
+    gss: '49',
+    pgss: '۴۹',
+    jss: '49',
+    pjss: '۴۹',
+    //
+    gt: 'a',
+    pgt: 'ق',
+    jt: 'a',
+    pjt: 'ق',
+    //
+    gtt: 'am',
+    pgtt: 'ق.ظ',
+    jtt: 'am',
+    pjtt: 'ق.ظ',
+    //
+    gT: 'A',
+    pgT: 'ق',
+    jT: 'A',
+    pjT: 'ق',
+    //
+    gTT: 'AM',
+    pgTT: 'ق.ظ',
+    jTT: 'AM',
+    pjTT: 'ق.ظ'
   },
   {
     raw: new Date('2003-12-01T12:16:06.003'),
@@ -76,28 +149,95 @@ const masks = [
     jdddd: 'DoShanbe',
     pjdddd: 'دوشنبه',
     //
-    m: '12',
-    pm: '۱۲',
-    mm: '12',
-    pmm: '۱۲',
-    mmm: 'Dec',
-    pmmm: 'آذر',
-    mmmm: 'December',
-    pmmmm: 'آذر',
-    yy: '03',
-    yyyy: '2003',
-    h: '12',
-    hh: '12',
-    H: '12',
-    HH: '12',
-    M: '16',
-    MM: '16',
-    s: '6',
-    ss: '06',
-    t: 'p',
-    tt: 'pm',
-    T: 'P',
-    TT: 'PM'
+    gm: '12',
+    pgm: '۱۲',
+    jm: '9',
+    pjm: '۹',
+    //
+    gmm: '12',
+    pgmm: '۱۲',
+    jmm: '09',
+    pjmm: '۰۹',
+    //
+    gmmm: 'Dec',
+    pgmmm: 'دسا',
+    jmmm: 'Aza',
+    pjmmm: 'آذر',
+    //
+    gmmmm: 'December',
+    pgmmmm: 'دسامبر',
+    jmmmm: 'Azar',
+    pjmmmm: 'آذر',
+    //
+    gyy: '03',
+    pgyy: '۰۳',
+    jyy: '82',
+    pjyy: '۸۲',
+    //
+    gyyyy: '2003',
+    pgyyyy: '۲۰۰۳',
+    jyyyy: '1382',
+    pjyyyy: '۱۳۸۲',
+    //
+    gh: '12',
+    pgh: '۱۲',
+    jh: '12',
+    pjh: '۱۲',
+    //
+    ghh: '12',
+    pghh: '۱۲',
+    jhh: '12',
+    pjhh: '۱۲',
+    //
+    gH: '12',
+    pgH: '۱۲',
+    jH: '12',
+    pjH: '۱۲',
+    //
+    gHH: '12',
+    pgHH: '۱۲',
+    jHH: '12',
+    pjHH: '۱۲',
+    //
+    gM: '16',
+    pgM: '۱۶',
+    jM: '16',
+    pjM: '۱۶',
+    //
+    gMM: '16',
+    pgMM: '۱۶',
+    jMM: '16',
+    pjMM: '۱۶',
+    //
+    gs: '6',
+    pgs: '۶',
+    js: '6',
+    pjs: '۶',
+    //
+    gss: '06',
+    pgss: '۰۶',
+    jss: '06',
+    pjss: '۰۶',
+    //
+    gt: 'p',
+    pgt: 'ب',
+    jt: 'p',
+    pjt: 'ب',
+    //
+    gtt: 'pm',
+    pgtt: 'ب.ظ',
+    jtt: 'pm',
+    pjtt: 'ب.ظ',
+    //
+    gT: 'P',
+    pgT: 'ب',
+    jT: 'P',
+    pjT: 'ب',
+    //
+    gTT: 'PM',
+    pgTT: 'ب.ظ',
+    jTT: 'PM',
+    pjTT: 'ب.ظ'
   }
 ]
 

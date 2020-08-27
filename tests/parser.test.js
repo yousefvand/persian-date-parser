@@ -9,9 +9,10 @@ describe('parser', () => {
       expect(parser.tokenize(d.format)).toEqual(d.tokens)
     })
   })
-  // test('parse', () => {
-  //   data.forEach(d => {
-  //     expect(parser.parse(d.format, d.now)).toBe(d.display)
-  //   })
-  // })
+  test('parse', () => {
+    data.forEach(d => {
+      expect(parser.parse(d.format, d.now, true)).toBe(d.display)
+      expect(parser.parse(d.format, d.now, false)).toBe(d.display)
+    })
+  })
 })
