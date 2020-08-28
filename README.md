@@ -2,7 +2,7 @@
 
 A **Javascript** library for parsing date and time to desired format.
 
-When possible consider using built-in `toLocaleDateString` method.
+When possible consider using built-in [Date.prototype.toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#:~:text=The%20toLocaleDateString()%20method%20returns,the%20behavior%20of%20the%20function.) method.
 
 ## Usage
 
