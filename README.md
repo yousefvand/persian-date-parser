@@ -15,11 +15,11 @@ $ npm i persian-date-parser
 ```js
 const pdp = require('persian-date-parser')
 
-console.log(pdp.parse('pjyyyy/pjmm/pjdd pjHH:pjMM pjTT', new Date(), true))
-۱۳۹۹/۰۶/۰۷ ۲۱:۳۷ ب.ظ
+console.log(pdp('pjyyyy/pjmm/pjdd - pjdddd - pjHH:pjMM pjTT', new Date(), true))
+۱۳۹۹/۰۶/۰۷ - جمعه - ۰۹:۴۶ ق.ظ
 ```
 
-The last boolean option if set `true` partially **caches** results for the input format. If you parse different formats on each call **DO NOT** set it to `true`.
+The last boolean option if set `true` partially **caches** results for the input format. If you parse different formats on each call frequently **DO NOT** set it to `true`.
 
 ## Masks
 
