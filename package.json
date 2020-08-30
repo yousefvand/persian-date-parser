@@ -1,6 +1,6 @@
 {
   "name": "persian-date-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parse date to various formats with Jalali support",
   "author": "Remisa Yousefvand <remisa.yousefvand@gmail.com>",
   "license": "GPL-3.0-or-later",
