@@ -1,8 +1,11 @@
 # Change History
 
+- v2.0.0
+
+  - Cache size limit.
+
 - v1.0.1
 
-  - Update to README.
   - Excluding tests from npm module.
 
 - v1.0.0

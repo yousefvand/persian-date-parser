@@ -3,8 +3,6 @@
 // const perf = require('perf_hooks')
 const utils = require('../lib/utils')
 
-const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
-
 describe('utils', () => {
   test('constant', () => {
     const rnd = Math.random()
@@ -37,6 +35,12 @@ describe('utils', () => {
       { us: 'T', fa: 'T' }
     ].forEach(n => expect(utils.persianNumber(n.us)).toBe(n.fa))
   })
+  test('objectShift', () => {
+    const obj = { a: 1 }
+    obj.b = 2
+    obj.c = 3
+    expect(utils.objectShift(obj)).toEqual({ b: 2, c: 3 })
+  })
   // test('indexOfAny', () => {
   //   expect(utils.indexOfAny('abc', ['x,y,z'])).toBe(-1)
   //   expect(utils.indexOfAny('aHbc', ['o', 'H'])).toBe(1)
@@ -44,6 +48,7 @@ describe('utils', () => {
   //   expect(utils.indexOfAny('yaHbc', ['m', 'H', 'y'])).toBe(0)
   //   expect(utils.indexOfAny('aZbQcs', ['p', 's', 'u'])).toBe(5)
   // })
+  /*
   test('memoize', () => {
     const f = x => Math.sqrt((19 * x ^ 2 + x * 3 - 7) / 5)
     const fm = utils.memoize(f)
@@ -61,4 +66,5 @@ describe('utils', () => {
     // console.log(`tf: ${tf}, tfm: ${tfm}, tf > tfm: ${tf > tfm}`)
     // expect(tf).toBeGreaterThan(tfm)
   })
+  */
 })

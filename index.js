@@ -1,1 +1,1 @@
-module.exports = require('./lib/parser').parse
+module.exports = require('./lib/parser').parser

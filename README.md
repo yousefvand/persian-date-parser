@@ -1,25 +1,56 @@
 # Persian date parser
 
-A **Javascript** library for parsing date and time to desired format (Jalali, Gregorian or mixed).
+Library for parsing date and time to desired format (Jalali, Gregorian or mixed).
 
 When possible consider using built-in [Date.prototype.toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#:~:text=The%20toLocaleDateString()%20method%20returns,the%20behavior%20of%20the%20function.) method.
 
 ## Usage
 
-
 ```bash
-$ npm i persian-date-parser
+> npm i persian-date-parser
 ```
-
 
 ```js
-const pdp = require('persian-date-parser')
-
-console.log(pdp('pjyyyy/pjmm/pjdd - pjdddd - pjHH:pjMM pjTT', new Date(), true))
-۱۳۹۹/۰۶/۰۷ - جمعه - ۰۹:۴۶ ق.ظ
+const parser = require('persian-date-parser')
 ```
 
-The last boolean option if set `true` partially **caches** results for the input format. If you parse different formats on each call frequently **DO NOT** set it to `true`.
+From the above line `parser` accepts an optional argument as the limit of cache entries. Each cache entry has a string (format) as its key (i.e. `'gyyyy-gm-gd'`) and a function as its value. If in your use-case format strings are limited, parser can benefit from caching those functions. On subsequent parsings for the same format, tokenizing and arranging steps are the same and can be bypassed by using cache, which results in better performance.
+
+| Cache size limit | Description                                                            |
+|:----------------:|:-----------------------------------------------------------------------|
+| > 0              | Any positive number. Bigger numbers mean more memory usage.            |
+| -1               | No caching. Default behavior.                                          |
+| 0                | Unlimited caching a.k.a memory leak. Use with caution.                 |
+
+```js
+const parse = parser() // no caching by default
+```
+
+or
+
+```js
+const parse = parser(1000) // cache up to 1000 entries (FIFO)
+```
+
+```js
+const now = new Date()
+```
+
+Jalali example:
+
+```js
+const format = 'pjyyyy/pjmm/pjdd - pjdddd - pjHH:pjMM pjTT'
+const result = parse(format, now)
+// result: ۱۳۹۹/۰۶/۰۹ - یکشنبه - ۲۱:۳۶ ب.ظ
+```
+
+Gregorian Example:
+
+```js
+const format = 'gyyyy/gmm/gdd - gdddd - gHH:gMM gTT'
+const result = parse(format, now)
+// result: 2020/08/30 - Sunday - 21:36 PM
+```
 
 ## Masks
 
@@ -29,7 +60,7 @@ Masks are according to following table but there are three general prefixes used
 
 - `j`: **Jalali** date.
 
-- `p`: Represent results in **Persian** when possible (numbers, month names...)
+- `p`: Represent results in **Persian** when possible (numbers, month names, weekdays and their abbreviations).
 
 | Mask | Description                                                            |
 |:-----|:-----------------------------------------------------------------------|
