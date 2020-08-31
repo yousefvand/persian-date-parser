@@ -1,5 +1,7 @@
 rollup.config.js
 node_modules/
 coverage/
+.vscode/
+.github/
 tests/
 dist/
