@@ -1,5 +1,7 @@
 # Persian date parser
 
+[![npm version](https://badge.fury.io/js/persian-date-parser.svg)](https://badge.fury.io/js/persian-date-parser) [![GitHub forks](https://img.shields.io/github/forks/yousefvand/persian-date-parser)](https://github.com/yousefvand/persian-date-parser/network) [![GitHub stars](https://img.shields.io/github/stars/yousefvand/persian-date-parser)](https://github.com/yousefvand/persian-date-parser/stargazers) [![GitHub issues](https://img.shields.io/github/issues/yousefvand/persian-date-parser)](https://github.com/yousefvand/persian-date-parser/issues) [![Code coverage](https://img.shields.io/badge/coverage-100%25-blueviolet)](https://github.com/yousefvand/persian-date-parser) [![GitHub license](https://img.shields.io/github/license/yousefvand/persian-date-parser)](https://github.com/yousefvand/persian-date-parser/blob/master/LICENSE)
+
 Library for parsing date and time to desired format (Jalali, Gregorian or mixed).
 
 When possible consider using built-in [Date.prototype.toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#:~:text=The%20toLocaleDateString()%20method%20returns,the%20behavior%20of%20the%20function.) method.

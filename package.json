@@ -9,6 +9,7 @@
   "scripts": {
     "build:plasmoid": "rollup --config",
     "test": "./node_modules/.bin/jest --detectOpenHandles --verbose --coverage",
+    "coverage": "jest --ci --coverage && node_modules/.bin/codecov",
     "spellcheck": "./node_modules/.bin/cspell --config .vscode/settings.json \"lib/*\" \"tests/*\""
   },
   "repository": {
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "codecov": "^3.7.2",
     "cspell": "^4.1.0",
     "jest": "^26.4.2",
     "rollup": "^2.26.8",
