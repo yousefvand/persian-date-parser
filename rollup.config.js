@@ -4,14 +4,14 @@ import resolve from '@rollup/plugin-node-resolve'
 const version = require('./package.json').version
 
 export default {
-  input: './lib/parser.js',
+  input: './index.js',
   inlineDynamicImports: true,
   output: [
     {
       format: 'cjs',
       exports: 'auto',
       esModule: false,
-      file: './dist/pdp.js',
+      file: './dist/plasmoid.js',
       intro:
   `/*
     Bundled for QML from "Persian date parser v${version}"
@@ -24,7 +24,22 @@ export default {
       format: 'cjs',
       exports: 'auto',
       esModule: false,
-      file: './dist/pdp.min.js',
+      file: './dist/plasmoid.min.js',
+      plugins: [terser()]
+    },
+    {
+      name: 'pdp',
+      format: 'umd',
+      exports: 'auto',
+      esModule: false,
+      file: './dist/node.js'
+    },
+    {
+      name: 'pdp',
+      format: 'umd',
+      exports: 'auto',
+      esModule: false,
+      file: './dist/node.min.js',
       plugins: [terser()]
     }
   ],

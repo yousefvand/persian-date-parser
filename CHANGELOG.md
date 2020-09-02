@@ -1,5 +1,9 @@
 # Change History
 
+- v2.0.2
+
+  - Decrease cache index on shift (fixed #4).
+
 - v2.0.1
 
   - Cache size limit.

@@ -1,13 +1,13 @@
 {
   "name": "persian-date-parser",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Parse date to various formats with Jalali support",
   "author": "Remisa Yousefvand <remisa.yousefvand@gmail.com>",
   "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/yousefvand/persian-date-parser#readme",
   "main": "index.js",
   "scripts": {
-    "build:plasmoid": "rollup --config",
+    "publish": "./node_modules/.bin/rollup --config",
     "test": "./node_modules/.bin/jest --detectOpenHandles --verbose --coverage",
     "coverage": "jest --ci --coverage && node_modules/.bin/codecov",
     "spellcheck": "./node_modules/.bin/cspell --config .vscode/settings.json \"lib/*\" \"tests/*\""
