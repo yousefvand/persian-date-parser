@@ -16,13 +16,18 @@ When possible consider using built-in [Date.prototype.toLocaleDateString()](http
 const parser = require('persian-date-parser')
 ```
 
-From the above line `parser` accepts an optional argument as the limit of cache entries. Each cache entry has a string (format) as its key (i.e. `'gyyyy-gm-gd'`) and a function as its value. If in your use-case format strings are limited, parser can benefit from caching those functions. On subsequent parsings for the same format, tokenizing and arranging steps are the same and can be bypassed by using cache, which results in better performance.
+From the above line `parser` accepts two optional arguments: `cache capacity` and `cache type`. Each cache entry has a string (format) as its key (i.e. `'gyyyy-gm-gd'`) and a function as its value. If in your use-case format strings are limited, parser can benefit from caching those functions. On subsequent parsings for the same format, tokenizing and arranging steps are the same and can be bypassed by using cache, which results in better performance.
 
-| Cache size limit | Description                                                            |
-|:----------------:|:-----------------------------------------------------------------------|
-| > 0              | Any positive number. Bigger numbers mean more memory usage.            |
-| -1               | No caching. Default behavior.                                          |
-| 0                | Unlimited caching a.k.a memory leak. Use with caution.                 |
+| Cache Capacity | Description                                                            |
+|:--------------:|:-----------------------------------------------------------------------|
+| > 0            | Any positive number. Bigger numbers mean more memory usage.            |
+| 0              | Unlimited caching a.k.a memory leak. Use with caution.                 |
+| < 0            | No caching. Default behavior.                                          |
+
+| Cache Type | Eviction Policy                                                            |
+|:----------:|:-------------------------------|
+| 'FIFO'     | First in first out (default).  |
+| 'LRU'      | Least Recently Used.           |
 
 ```js
 const parse = parser() // no caching by default
@@ -31,7 +36,7 @@ const parse = parser() // no caching by default
 or
 
 ```js
-const parse = parser(1000) // cache up to 1000 entries (FIFO)
+const parse = parser(1000) // or parser(1000, 'LRU')
 ```
 
 ```js
@@ -62,7 +67,7 @@ Masks are according to following table but there are three general prefixes used
 
 - `j`: **Jalali** date.
 
-- `p`: Represent results in **Persian** when possible (numbers, month names, weekdays and their abbreviations).
+- `p`: Represent results in **Persian** (numbers, month names, weekdays and their abbreviations).
 
 | Mask | Description                                                            |
 |:-----|:-----------------------------------------------------------------------|
