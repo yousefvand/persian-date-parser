@@ -35,12 +35,12 @@ describe('utils', () => {
       { us: 'T', fa: 'T' }
     ].forEach(n => expect(utils.persianNumber(n.us)).toBe(n.fa))
   })
-  test('objectShift', () => {
-    const obj = { a: 1 }
-    obj.b = 2
-    obj.c = 3
-    expect(utils.objectShift(obj)).toEqual({ b: 2, c: 3 })
-  })
+  // test('objectShift', () => {
+  //   const obj = { a: 1 }
+  //   obj.b = 2
+  //   obj.c = 3
+  //   expect(utils.objectShift(obj)).toEqual({ b: 2, c: 3 })
+  // })
   // test('indexOfAny', () => {
   //   expect(utils.indexOfAny('abc', ['x,y,z'])).toBe(-1)
   //   expect(utils.indexOfAny('aHbc', ['o', 'H'])).toBe(1)

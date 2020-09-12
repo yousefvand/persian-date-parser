@@ -1,5 +1,9 @@
 # Change History
 
+- v2.1.0
+
+  - Support for `LRU` cache.
+
 - v2.0.2
 
   - Decrease cache index on shift (fixed #4).
