@@ -7,10 +7,10 @@
   "homepage": "https://github.com/yousefvand/persian-date-parser#readme",
   "main": "index.js",
   "scripts": {
-    "prepublish": "./node_modules/.bin/rollup --config",
-    "test": "./node_modules/.bin/jest --detectOpenHandles --verbose --coverage",
+    "prepublish": "npx rollup --config",
+    "test": "npx jest --detectOpenHandles --verbose --coverage",
     "coverage": "jest --ci --coverage && node_modules/.bin/codecov",
-    "spellcheck": "./node_modules/.bin/cspell --config .vscode/settings.json \"lib/*\" \"tests/*\""
+    "spellcheck": "npx cspell --config .vscode/settings.json \"lib/*\" \"tests/*\""
   },
   "repository": {
     "type": "git",
@@ -27,13 +27,13 @@
     "Shamsi"
   ],
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^15.0.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "codecov": "^3.7.2",
-    "cspell": "^4.1.0",
-    "jest": "^26.4.2",
-    "rollup": "^2.26.11",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "codecov": "^3.8.0",
+    "cspell": "^4.1.2",
+    "jest": "^26.6.1",
+    "rollup": "^2.32.1",
     "rollup-plugin-terser": "^7.0.2",
-    "standard": "^14.3.4"
+    "standard": "^15.0.0"
   }
 }
